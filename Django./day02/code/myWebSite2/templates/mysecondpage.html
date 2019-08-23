@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小建洗浴中心</title>
+</head>
+<body>
+    <h1>myvar = {{ myvar }}</h1>
+    <h1>myvar + 1 = {{ myvar | add:1 }}</h1>
+    <h1>mystr = {{ mystr }}</h1>
+    <h1>mystr = {{ mystr | upper }}</h1>
+    <h1>mystr : truncatechars:10 = {{ mystr |truncatechars:10 }}</h1>
+    <h1>mystr : truncatewords:10= {{ mystr |truncatewords:10}}</h1>
+    <h1>mylist = {{ mylist }}</h1>
+    <h1>mylist[1] = {{ mylist.1 }}</h1>
+    <h1>person = {{ person }}</h1>
+    <h1>person = {{ person.age }}</h1>
+    <h1>myfun1() = {{ myfun1 }}</h1>
+    <h1>你是:{% if money > 100000000 %}富翁{% elif money > 100000 %}富人{% endif %}</h1>
+    <select name="" id="">
+        {% for city in cities %}
+        <option value="">{{ city }}</option>
+        {% empty %}
+        <option value="">请添加项目</option>
+        {% endfor %}
+    </select>
+
+    {% comment%}
+    <ul>
+        {% for c in cities %}
+        {% if forloop.first %}
+        <li>***************************************</li>
+        {% endif %}
+        <li>第{{forloop.revcounter}}个景区:{{ c }}</li>
+        {% endfor %}
+    </ul>
+    {% endcomment%}
+    {# 这是一行不显示的内容 #}
+</body>
+</html>

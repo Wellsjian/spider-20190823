@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json注册</title>
+    <script src="/static/common.js"></script>
+    <script src="/static/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                var xhr = createXhr()
+                var uname = $("#uname").val()
+                var upwd = $("#upwd").val()
+                var uemail = $("#uemail").val()
+                var nickname = $("#nickname").val()
+                var arr = {
+                    'uname' : uname,
+                    'upwd' : upwd,
+                    'uemail' : uemail,
+                    'nickname' : nickname
+                    }
+                var json_arr = JSON.stringify(arr)
+                xhr.open('get','/ajax01/10_server?str='+json_arr,true)
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        if(xhr.responseText == "1"){
+                            alert("注册成功")
+                            }else{
+                            alert("注册失败")
+                            }
+                        }
+                    }
+                xhr.send(null)
+                })
+
+            })
+    </script>
+</head>
+<body>
+    <p>用户名称<input type="text" id="uname" name="uname"><span id="check"></span></p>
+    <p>用户密码<input type="text" id="upwd" name="upwd"></p>
+    <p>用户邮箱<input type="text" id="uemail" name="uemail"></p>
+    <p>用户昵称<input type="text" id="nickname" name="nickname"></p>
+    <p><input type="button" id="btn" value="提交"></p>
+
+</body>
+</html>

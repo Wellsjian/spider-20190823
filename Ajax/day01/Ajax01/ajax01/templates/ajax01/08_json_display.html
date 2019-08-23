@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/static/common.js"></script>
+    <script src="/static/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                var xhr = createXhr()
+                xhr.open("get","/ajax01/08_server/",true)
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        //接收响应并转换为JS数组
+                        var arr = JSON.parse(xhr.responseText)
+                        html = ""
+                        for(var i in arr){
+                            html += "<tr>"
+                            html += "<td>" + arr[i].pk +"</td>"
+                            html += "<td>" + arr[i].fields.uname +"</td>"
+                            html += "<td>" + arr[i].fields.upwd +"</td>"
+                            html += "<td>" + arr[i].fields.uemail +"</td>"
+                            html += "<td>" + arr[i].fields.nickname +"</td>"
+                            html += "</tr>"
+
+                            }
+                        $("#tbody").html(html)
+
+                        }
+
+                    }
+                xhr.send(null)
+                })
+
+            })
+    </script>
+</head>
+<body>
+    <button id="btn">显示</button>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>密码</th>
+                <th>邮箱</th>
+                <th>昵称</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+</body>
+</html>

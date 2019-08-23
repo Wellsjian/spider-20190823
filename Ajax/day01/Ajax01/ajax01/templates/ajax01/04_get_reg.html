@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/static/common.js"></script>
+    <script src="/static/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            /* */
+            $("#id_uname").blur(function(){
+                //1.创建xhr
+                var xhr = createXhr();
+                //2.创建请求
+                var uname = $("#id_uname").val();//获取输入框的值
+                var url = '/ajax01/04_server?uname='+ uname;
+                xhr.open('get',url,true)
+                //3.设置回调函数
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status ==200){
+                        //$('#uname_tip').html(xhr.responseText)
+                        if(xhr.responseText == "1"){
+                            $('#uname_tip').html("用户已经存在")
+
+                            }else{
+                            $('#uname_tip').html("通过")
+                            }
+
+
+                        }
+                    }
+                //4.发送请求
+                xhr.send(null)
+                })
+
+
+
+
+
+        $("#but").click(function(){
+            var xhr = createXhr();
+            //2.创建请求
+            var uname = $("#id_uname").val();//获取输入框的值
+            var upwd = $("#id_upwd").val();//获取输入框的值
+            var uemail = $("#id_uemail").val();//获取输入框的值
+            var nickname = $("#id_unickname").val();//获取输入框的值
+            var url1 = '/ajax01/04_server02?uname='+ uname;
+            var url2 = '&upwd=' + upwd
+            var url3 = '&uemail=' + uemail
+            var url4 = '&nickname=' + nickname
+            url = url1 + url2 + url3 + url4
+            xhr.open('get',url,true)
+            //3.设置回调函数
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status ==200){
+                    //$('#reg').html(xhr.responseText)
+                    if(xhr.responseText == "1"){
+                        //*$('#reg').html("注册成功")
+                        alert("注册成功")
+                        }else{
+                        //*$('reg').html("注册失败")
+                        alert("注册失败")
+                        }
+                    }
+                }
+
+            //4.发送请求
+            xhr.send(null)
+            })
+
+        })
+
+
+
+    </script>
+</head>
+<body>
+
+<div>
+    <label for="id_uname">姓名</label>
+    <input type="text" name="uname" id="id_uname">
+    <span id="uname_tip"></span>
+</div>
+<div>
+    <label for="id_upwd">密码</label>
+    <input type="text" name="upwd" id="id_upwd">
+</div>
+<div>
+    <label for="id_uemail">邮箱</label>
+    <input type="text" name="uemail" id="id_uemail">
+</div>
+<div>
+    <label for="id_unickname">昵称</label>
+    <input type="text" name="nickname" id="id_unickname">
+</div>
+<input type="button" value="注册" id="but">
+<span id="reg"></span>
+</body>
+</html>

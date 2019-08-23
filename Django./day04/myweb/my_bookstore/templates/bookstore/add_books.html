@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加图书</title>
+    <style>
+        div label{
+            display:inline-block;
+            width:60px;}
+    </style>
+</head>
+<body>
+    <a href="/my_bookstore">返回主页</a>
+    <form action="/my_bookstore/add_finally" method="post">
+        <div>
+        <label for="id_new">书名:</label>
+        <input type="text" id="id_new" name="title" placeholder="请输入书名">
+        </div>
+        <div>
+        <label for="id_pol">出版社:</label>
+        <input type="text" id="id_pol" name="pub_house" placeholder="请输入出版社">
+        </div>
+        <div>
+        <label for="id_price">价格</label>
+        <input type="text" id="id_price" name="price" placeholder="请输入价格">
+        </div>
+        <div>
+        <label for="id_my_price">定价</label>
+        <input type="text" id="id_my_price" name="market_price" placeholder="请输入定价">
+        </div>
+        <input type="submit" value="增加图书">
+    </form>
+
+</body>
+</html>

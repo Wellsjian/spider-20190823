@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>显示图书信息</title>
+</head>
+<body>
+    <a href="/my_bookstore">返回主页</a>
+    <table border="1px solid blue">
+        <tr>
+            <th>书名</th>
+            <th>出版社</th>
+            <th>定价</th>
+            <th>市场价</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title}}</td>
+            <td>{{ book.pub_house}}</td>
+            <td>{{ book.price}}</td>
+            <td>{{ book.market_price}}</td>
+            <td><a href="/my_bookstore/mod/{{ book.id }}">修改</a></td>
+            <td><a href="/my_bookstore/del/{{ book.id }}">删除</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/my_bookstore/select">根据价格低于给定值查询</a>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/static/jquery-1.11.3.js"></script>
+    <style>
+        #main{
+            position:relative;
+            }
+        #show{
+            position:absolute;
+            width:179px;
+            min-height:300px;
+            border:1px solid #000;
+            background:#fff;
+            left:48px;
+            top:25px;
+            display:none;
+            }
+    </style>
+    <script>
+        $(function(){
+            $("#keyup").keyup(function(){
+                //判断文本框的去掉空格的值是否为空trim()
+                kw = $("#keyup").val().trim();
+                if(kw.length == 0){
+                    $("#show").html("")
+                    $("#show").css('display','none')//影藏show
+                    }else{
+                        $.get('/ajax01/13_server/',kw,function(responseText){
+                            if(responseText.length == 0){
+                                $("#show").html("")//清空
+                                $("#show").css('display','none')//影藏show
+                                }else{
+                                    $("#show").html("")
+                                    $(responseText).each(function(i,obj){
+                                        $("#show").css('display',"block")//显示
+                                        var $p = $("<p>"+obj+"</p>")
+                                        $("#show").append($p)
+                                        })
+                                    }
+                            },'json')
+                        }
+                })
+
+            })
+    </script>
+</head>
+<body>
+    <div id="main">
+        用户名<input type="text" id="keyup">
+        <button>搜索</button>
+        <!--提示框,相对定位的  相对于main 实现位置的摆放-->
+        <div id="show"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON对象</title>
+    <script src="/static/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                //1.模拟一个JSON字符串
+                var flight = '{"flightNO":"NH980","from":"PEK","to":"KIX","time":"14:20"}'
+                //2.通过JSON.parse()将JSON对象转化为js对象
+                var obj = JSON.parse(flight)
+                console.log(obj)
+                //3.解析对象
+                console.log('航班号:'+obj.flightNO)
+                console.log('出发:'+obj.from)
+                console.log('到达:'+obj.to)
+                console.log('时间:'+obj.time)
+                });
+            $("#btn1").click(function(){
+                //1.模拟一个JSON字符串
+                var str = '[{"flightNO":"NH980","from":"PEK","to":"KIX","time":"14:20"},{"flightNO":"NH979","from":"KIX","to":"PEK","time":"09:40"}]'
+
+                //2.通过JSON.parse()将JSON对象转化为js对象
+                var arr = JSON.parse(str)
+                //3.解析对象
+                $(arr).each(function(i,obj){
+                    console.log('下标为'+i+'航班号:'+obj.flightNO)
+                    console.log('下标为'+i+'出发:'+obj.from)
+                    console.log('下标为'+i+'到达:'+obj.to)
+                    console.log('下标为'+i+'时间:'+obj.time)
+                });
+                });
+            })
+    </script>
+</head>
+<body>
+    <button id="btn">JSON串 -> JS 对象</button>
+    <button id="btn1">JSON串 -> JS 数组</button>
+
+</body>
+</html>

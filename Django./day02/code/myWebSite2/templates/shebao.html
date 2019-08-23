@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>社保计算器</title>
+</head>
+<body>
+    <form action="/shebao" method="post">
+        请输入基数<input type="text" name="t_name"><br>
+        请选择户口<select name="c_name" id="">
+                    <option value=1 >城市户口</option>
+                    <option value=0 >农村户口</option>
+                </select><br>
+        <input type="submit" value="开始计算">
+    </form>
+    {% if c_name %}
+    <table>
+        <tr>
+            <td>项目</td>
+            <td>个人缴纳比例</td>
+            <td>单位缴纳比例</td>
+        </tr>
+        <tr>
+            <td>养老保险：</td>
+            <td>{{g_yanglao |floatformat:2 }}</td>
+            <td>{{c_yanglao |floatformat:2}}</td>
+        </tr>
+        <tr>
+            <td>失业保险:</td>
+            <td>{{g_shiye |floatformat:2}}</td>
+            <td>{{c_shiye |floatformat:2}}</td>
+        </tr>
+        <tr>
+            <td>工伤保险:</td>
+            <td>{{g_gongshang |floatformat:2 }}</td>
+            <td>{{c_gongshang |floatformat:2}}</td>
+        </tr>
+        <tr>
+            <td>生育保险:</td>
+            <td>{{g_shengyu |floatformat:2}}</td>
+            <td>{{c_shengyu |floatformat:2}}</td>
+        </tr>
+        <tr>
+            <td>医疗保险:</td>
+            <td>{{g_yiliao |floatformat:2}}</td>
+            <td>{{c_yiliao |floatformat:2}}</td>
+        </tr>
+        <tr>
+            <td>公积金:</td>
+            <td>{{g_gongjijin |floatformat:2 }}</td>
+            <td>{{c_gongjijin |floatformat:2}}</td>
+        </tr>
+        <tr>
+            <td>个人缴费总和:</td>
+            <td>{{g_sum |floatformat:2}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>公司缴费总和:</td>
+            <td>{{c_sum |floatformat:2}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>纳入国家全额总和:</td>
+            <td>{{sum |floatformat:2}}</td>
+            <td></td>
+        </tr>
+
+    </table>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录界面</title>
+</head>
+<body>
+    <form action="/node/login" method="post">
+        <div>
+            <label for="id_name">用户名</label>
+            <input type="text" id="id_name" name="username" placeholder="请输入用户名" value="{{ username }}">
+            <span>{{ user_error}}</span>
+        </div>
+         <div>
+            <label for="id_passwd">密码</label>
+            <input type="text" id="id_passwd" name="password" placeholder="请输入用户密码" value="{{ password }}">
+            <span>{{ pass_error}}</span>
+         </div>
+        <div>
+            <input type="checkbox" value="1" id="id_rem" name="rem">
+            <label for="id_rem">记住该用户</label>
+        </div>
+        <input type="submit" value="登录">
+    </form>
+
+</body>
+</html>

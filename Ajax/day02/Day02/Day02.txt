@@ -1,0 +1,81 @@
+回顾：
+	1.核心对象 - xhr
+		if(window.XMLHttpRequest){
+			return new XMLHttpRequest();
+		}else{
+			return new ActiveXObject("Micosoft.XMLHTTP");
+		}
+	2.xhr 的成员
+		1.方法 - open(method,url,async)
+		2.属性 - readyState
+			4:服务器端响应完毕
+		3.属性 - status
+			200:服务器端正确响应所有信息
+		4.属性 - responseText
+		5.事件 - onreadystatechange
+		6.方法 - send(body)
+			get : null
+			post : 发送的数据
+
+
+======================================
+1.使用AJAX发送POST请求
+	1.创建xhr
+	2.创建请求
+		1.请求方式改为post
+		2.有请求参数的话不能拼在地址的后面
+		3.设置回调函数
+		4.设置请求消息头 - Content-Type
+			xhr.setRequestHeader(
+				"Content-Type",
+				"application/x-www-form-urlencoded"
+			)
+		5.发送请求
+			请求数据放在send()的参数位置处
+			示例:
+				xhr.send("name=wangwc&age=30&gender=男");
+2.JSON
+	1.介绍JSON
+		JSON：JavaScript Object Notation
+		      JS         对象   表现方式
+		以JS对象的格式来约束前后端交互的字符串数据
+	2.JSO - JS对象
+		使用 JS 对象表示一个人的信息，包含如下属性:
+			姓名:wangwc
+			年龄:30
+			身高:180
+			体重:180
+		var obj = {
+			name:"wangwc",
+			age:30,
+			height:180,
+			weight:180
+		}
+
+		console.log("姓名:"+obj.name);
+	3.JSON规范
+		1.使用JSON表示单个对象
+			1.使用 {} 表示一个对象
+			2.在 {} 中使用key:value来表示属性(数据)
+			3.key必须使用""引起来
+			4.value如果是字符串的话，也必须使用""引起来
+			5.多对 key:value之间使用 , 分隔
+
+			示例:
+				var obj = '{"name":"wangwc","age":30}';
+		2.使用JSON表示多个对象
+			使用 [] 来表示一组对象
+			示例:使用JSON表示2个人的信息
+			var users = '[{"name":"wangwc","age":30},{"name":"weimz","age":40}]';
+	4.前端中处理JSON
+		将得到的JSON串转换成JS对象/数组
+		var js对象 = JSON.parse(JSON串);
+
+
+
+
+
+
+
+
+

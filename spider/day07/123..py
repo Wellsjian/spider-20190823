@@ -1,0 +1,7 @@
+"from": "zh",
+"to": "en",
+"query": "大象",
+"transtype": "realtime",
+"simple_means_flag": "3",
+"sign": "318373.14484",
+"token": "3192e062d038acea538010ab87a61b8f",

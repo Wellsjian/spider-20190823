@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/static/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            //加载ajiax01/11_head.html到top中
+            $("#top").load("/ajax01/11_head/",function(responseText){
+                console.log(responseText)
+                window.setTimeout(function(){
+                    $("#top").hide(5000)
+                    },5000)
+
+                })
+
+            })
+
+    </script>
+</head>
+<body>
+    <div id="top"></div>
+    <h1>网页主体内容</h1>
+    <h1>网页底部内容</h1>
+</body>
+</html>
